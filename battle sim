@@ -1,0 +1,79 @@
+#include<iostream>
+using namespace std;
+
+void BattleSim();
+
+int playerHealth = 10;
+
+int main() {
+	srand(time(NULL));
+	int room = 1;
+	char input;
+	while (playerHealth > 0) {//gameloop
+		switch (room) {
+		case 1:
+			cout << "you are in room 1, you can go (s)outh" << endl;
+			cin >> input;
+			if (input == 's')
+				room = 2;
+			break;
+		case 2:
+			cout << "you are in room 2, you can go (S)outh or (N)orth" << endl;
+			cin >> input;
+			if (input == 's')
+				room = 3;
+			else if (input == 'n')
+				room = 1;
+			break;
+		case 3:
+			cout << "you are in room 3, you can go  (N)orth" << endl;
+			BattleSim();
+			cin >> input;
+			if (input == 'n')
+				room = 2;
+			break;
+		}
+
+	}//end gameloop
+	cout << "you are infected" << endl;
+
+}//end main
+
+
+void BattleSim() {
+	int monsterHealth = 5;
+	int damage;
+	char dummy;
+	cout << endl << endl << "----------something-------------" << endl;
+	cout << "something approches" << endl;
+	while (playerHealth > 0 && monsterHealth > 0) {// battle
+
+		//something fight
+		damage = rand() % 3 + 1;
+		cout << " something hit you for " << damage << "DMG" << endl;
+		playerHealth -= damage;
+		cout << "press a key to attack" << endl;
+		cin >> dummy;
+
+		//player
+		damage = rand() % 4;
+		cout << "you hit something for 2" << endl;
+		monsterHealth -= damage;
+		cout << "press a key to continue" << endl;
+		cin >> dummy;
+
+		if (playerHealth > 0)
+			cout << "your HP is now:" << playerHealth << endl;
+		else
+			cout << "you are infected" << endl;
+		if (monsterHealth > 0)
+			cout << "something's HP is now:" << monsterHealth << endl;
+		else
+			cout << "somthing falls" << endl;
+
+
+		
+
+	}
+	cout << "end" << endl;
+}
