@@ -1,0 +1,77 @@
+#include<iostream>
+using namespace std;
+
+void shop();
+
+string inventory[10];
+int money = 100;
+
+int main() {
+	int room = 1;
+	string input;
+	do {
+		cout << "your invetory";
+		for (int i = 0; i < 10; i++)
+			cout << inventory[i] << "|";
+		cout << endl << endl;
+
+		switch (room) {
+		case 1:
+			cout << "you're in room 1, you can go south" << endl;
+			cout << money << endl;
+			cin >> input;
+			if (input == "south") {
+				room = 2;
+			}
+			break;
+		case 2:
+			shop();
+			cout << "you're in room 2, you can go north" << endl;
+			cin >> input;
+			if (input == "north") {
+				room = 1;
+			}
+		}
+	} while (input != "quit");
+}
+
+void shop() {
+	char input = '-';
+	cout << "-----------------------------------------------" << endl;
+	cout << "what are you buying " << endl;
+	while (input != 'q') {
+		cout << "press p for potion ($15), s for sword($30), a for armor($50) q to quit" << endl;
+		cin >> input;
+		switch (input) {
+		case 'p':
+			if (money >= 15) {
+				cout << "you got a potion" << endl;
+				money -= 15;
+				inventory[0] = "potion";
+			}
+			else
+				cout << "you don't have enuff money" << endl;
+			break;
+		case 's':
+			if (money >= 30) {
+				cout << "you got a sword" << endl;
+				money -= 30;
+				inventory[1] = "sword";
+			}
+			else
+				cout << "you don't have enuff money" << endl;
+			break;
+		case 'a':
+			if (money >= 50) {
+				cout << "you got armor" << endl;
+				money -= 50;
+				inventory[2] = "armor";
+			}
+			else
+				cout << "you don't have enuff money" << endl;
+			break;
+		}
+	}
+	cout << "-----------------------------------------------" << endl;
+
+}
