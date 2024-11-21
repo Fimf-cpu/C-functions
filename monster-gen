@@ -1,0 +1,34 @@
+#include<iostream>
+using namespace std;
+
+void monster();
+
+int main() {
+	srand(time(NULL));
+	while (1) {
+		monster();
+		system("pause");
+	}
+}
+
+
+void monster() {
+	int num = rand() % 100;
+	cout << "from the dark ";
+
+	if (num < 30) {
+		cout << "a zombie" << endl;
+	}
+	else if (num < 60) {
+		cout << "a skeleton" << endl;
+	}
+	else if (num < 80) {
+		cout << "a spider" << endl;
+	}
+	else if (num < 95) {
+		cout << "a sightly larger spider" << endl;
+	}
+	else {
+		cout << "kirby, make peace with your god" << endl;
+	}
+}
